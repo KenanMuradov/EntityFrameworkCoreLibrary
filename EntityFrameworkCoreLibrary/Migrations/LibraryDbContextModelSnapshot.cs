@@ -73,9 +73,6 @@ namespace EntityFrameworkCoreLibrary.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BookThemeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -94,7 +91,7 @@ namespace EntityFrameworkCoreLibrary.Migrations
                     b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ThemeId")
+                    b.Property<int>("ThemeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -194,7 +191,9 @@ namespace EntityFrameworkCoreLibrary.Migrations
 
                     b.HasOne("EntityFrameworkCoreLibrary.Models.Theme", "Theme")
                         .WithMany("Books")
-                        .HasForeignKey("ThemeId");
+                        .HasForeignKey("ThemeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Student");
 

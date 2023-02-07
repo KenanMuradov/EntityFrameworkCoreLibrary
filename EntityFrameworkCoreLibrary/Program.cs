@@ -41,20 +41,20 @@ public class Program
             new Book()
             {
                 Name = "C# in a Nutshell",
-                BookThemeId = Random.Shared.Next(1, themeIdMax),
+                ThemeId = Random.Shared.Next(1, themeIdMax),
                 PageCount = Random.Shared.Next(1000),
             },
             new Book()
             {
                 Name = "Programming in C++",
-                BookThemeId = Random.Shared.Next(1, themeIdMax),
+                ThemeId = Random.Shared.Next(1, themeIdMax),
                 PageCount = Random.Shared.Next(1000),
                 Status = DataStatus.Updated
             },
             new Book()
             {
                 Name = "Basics Of Visual Basic",
-                BookThemeId = Random.Shared.Next(1, themeIdMax),
+                ThemeId = Random.Shared.Next(1, themeIdMax),
                 PageCount = Random.Shared.Next(1000),
                 Status = DataStatus.Deleted
             }
@@ -68,7 +68,7 @@ public class Program
             b.Id,
             b.Name,
             b.PageCount,
-            b.BookThemeId,
+            b.ThemeId,
             b.Status
         });
 
@@ -78,7 +78,7 @@ public class Program
             Console.WriteLine(@$"{book.Id}
 {book.Name}
 {book.PageCount}
-{book.BookThemeId}
+{book.ThemeId}
 {book.Status}
 ");
         }

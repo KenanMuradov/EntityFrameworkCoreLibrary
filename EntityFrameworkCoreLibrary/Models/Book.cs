@@ -10,7 +10,7 @@ public class Book : BaseEntity
 {
     public string Name { get; set; }
     public int PageCount { get; set; }
-    public int BookThemeId { get; set; }
+    public int ThemeId { get; set; }
     public int? StudentId { get; set; }
     // Navigation Property
     public Student Student { get; set; }

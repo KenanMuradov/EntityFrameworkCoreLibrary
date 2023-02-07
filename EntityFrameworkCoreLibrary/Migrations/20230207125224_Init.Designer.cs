@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameworkCoreLibrary.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20230127101149_Init")]
+    [Migration("20230207125224_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,9 +75,6 @@ namespace EntityFrameworkCoreLibrary.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("BookThemeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -96,7 +93,7 @@ namespace EntityFrameworkCoreLibrary.Migrations
                     b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ThemeId")
+                    b.Property<int>("ThemeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -196,7 +193,9 @@ namespace EntityFrameworkCoreLibrary.Migrations
 
                     b.HasOne("EntityFrameworkCoreLibrary.Models.Theme", "Theme")
                         .WithMany("Books")
-                        .HasForeignKey("ThemeId");
+                        .HasForeignKey("ThemeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Student");
 
